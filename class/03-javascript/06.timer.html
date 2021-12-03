@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+    <title>돔DOM 조작하기</title>
+    <script>
+            let isStarted = false;
+        const getToken = () => {
+
+            if (isStarted === false) {
+                isStarted = true;
+                let token = String(Math.floor(Math.random()*1000000)).padStart(6,'0')
+                document.getElementById('auth').innerText = token;
+
+                // 10초 타이머
+                let time = 10
+                setInterval(function() {
+                    if(time >= 0){
+                        const min = String(Math.floor(time/60)).padStart(2,'0')
+                        const sec = String(time% 60).padStart(2,"0")
+                        document.getElementById('timer').innerText = min + ':' + sec
+                        time = time - 1;
+                    }
+                    else{
+                        document.getElementById('clear').disabled = true;
+                        isStarted =false;
+                    }
+                },1000)
+            } else {
+                alert('Timer is already on.')
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id ='auth'>000000</div>
+    <button onclick = 'getToken()'>인증번호전송</button>
+
+    <div id ='timer'>00:10</div>
+    <button onclick = 'getToken()' id='clear'>인증완료</button>
+</body>
+</html>

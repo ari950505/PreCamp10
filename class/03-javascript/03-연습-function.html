@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+   
+    <title>인증번호</title>
+    <script>
+        const getToken = () => {
+            let token = String(Math.floor(Math.random()*1000000)).padStart(6,'0')
+            document.getElementById('auth').innerText = token;
+            document.getElementById('auth').style.color = "#" + token
+        }
+    </script>
+</head>
+<body>
+    <h3 id= 'auth'>000000</h3>
+    <button onclick='getToken()'>인증번호 전송</button>
+</body>
+</html>
+

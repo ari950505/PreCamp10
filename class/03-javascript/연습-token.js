@@ -1,0 +1,1 @@
+let token = String(Math.floor(Math.random()*100000)).padStart(6,'0')
